@@ -37,9 +37,9 @@ public class Comment {
 
 	}
 
-    public Comment(User userComments, Song songComments, String content) {
-    	this.userComments = userComments;
-    	this.songComments = songComments;
+    public Comment(User user, Song song, String content) {
+    	this.user = user;
+    	this.song = song;
     	this.content = content;
     }
     
