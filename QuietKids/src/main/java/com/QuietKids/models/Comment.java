@@ -1,30 +1,42 @@
 package com.QuietKids.models;
 
 import java.util.*;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "comments")
+
 public class Comment {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+
 	private String content;
+
 	@Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
     
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_id")
-    private User userComments;
+
+    private User user;
     
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="song_id")
-    private Song songComments;
+    private Song song;
+    
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+
     
     public Comment() {
 
 	}
+
     public Comment(User userComments, Song songComments, String content) {
     	this.userComments = userComments;
     	this.songComments = songComments;
@@ -32,6 +44,7 @@ public class Comment {
     }
     
     public Long getId() {
+
 		return id;
 	}
 	public void setId(Long id) {
@@ -55,26 +68,23 @@ public class Comment {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public User getUserComments() {
-		return userComments;
+
+	public User getAuthor() {
+		return user;
 	}
-	public void setUserComments(User userComments) {
-		this.userComments = userComments;
+	public void setAuthor(User user) {
+		this.user = user;
 	}
-	public Song getSongComments() {
-		return songComments;
+	public Song getSong() {
+		return song;
 	}
-	public void setSongComments(Song songComments) {
-		this.songComments = songComments;
+	public void setSong(Song song) {
+		this.song = song;
 	}
-	
-	@PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
-    }
-    
-    @PreUpdate
+	@PreUpdate
+
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
 }
+
