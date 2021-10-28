@@ -5,20 +5,22 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name="comments")
+@Table(name = "comments")
+
 public class Comment {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String content;
-	
+
 	@Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
     
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_id")
+
     private User user;
     
     @ManyToOne(fetch=FetchType.LAZY)
@@ -29,16 +31,20 @@ public class Comment {
     protected void onCreate(){
         this.createdAt = new Date();
     }
+
     
     public Comment() {
 
 	}
-    public Comment(User user, Song song, String content) {
-    	this.user = user;
-    	this.song = song;
+
+    public Comment(User userComments, Song songComments, String content) {
+    	this.userComments = userComments;
+    	this.songComments = songComments;
     	this.content = content;
     }
-	public Long getId() {
+    
+    public Long getId() {
+
 		return id;
 	}
 	public void setId(Long id) {
@@ -62,6 +68,7 @@ public class Comment {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
 	public User getAuthor() {
 		return user;
 	}
@@ -75,6 +82,7 @@ public class Comment {
 		this.song = song;
 	}
 	@PreUpdate
+
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
