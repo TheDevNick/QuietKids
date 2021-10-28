@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.QuietKids.models.Song;
 import com.QuietKids.models.User;
 import com.QuietKids.services.SongService;
 import com.QuietKids.services.UserService;
@@ -44,7 +45,7 @@ public class UserController {
 		
 		User newUser = this.userService.registerUser(user);
 		session.setAttribute("userId", newUser.getId());
-		return "redirect:/ideas";
+		return "redirect:/songs";
 	}
 	
 	@PostMapping("/login")
@@ -52,13 +53,13 @@ public class UserController {
 		if(this.userService.authenticateUser(email, password)) {
 			User user = this.userService.getUserByEmail(email);
 			session.setAttribute("userId", user.getId());
-			return "redirect:/ideas";
+			return "redirect:/songs";
 		}
 		redirs.addFlashAttribute("error", "Invalid Email/Password");
 		return "redirect:/";
 	}
 	
-	@RequestMapping("/ideas")
+	@RequestMapping("/songs")
 	public String home(HttpSession session, Model model) {
 		Long uID = (Long) session.getAttribute("userId");
 		User user = this.userService.findById(uID);
@@ -73,7 +74,7 @@ public class UserController {
 
 	}
 	
-	@RequestMapping("/ideas/lowest")
+	@RequestMapping("/songs/lowest")
 	public String homeL(HttpSession session, Model model) {
 		Long uID = (Long) session.getAttribute("userId");
 		User user = userService.findById(uID);
@@ -84,7 +85,7 @@ public class UserController {
 
 	}
 	
-	@RequestMapping("/ideas/highest")
+	@RequestMapping("/songs/highest")
 	public String homeH(HttpSession session, Model model) {
 		Long uID = (Long) session.getAttribute("userId");
 		User user = userService.findById(uID);
