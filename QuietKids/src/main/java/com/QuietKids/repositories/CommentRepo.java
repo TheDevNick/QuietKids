@@ -2,8 +2,8 @@ package com.QuietKids.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.QuietKids.models.Comments;
+import com.QuietKids.models.Comment;
 
-public interface CommentRepo extends CrudRepository<Comments, Long> {
+public interface CommentRepo extends CrudRepository<Comment, Long> {
 
 }

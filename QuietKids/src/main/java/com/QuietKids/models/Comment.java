@@ -1,5 +1,5 @@
 package com.QuietKids.models;
 
-public class Comments {
+public class Comment {
 
 }
