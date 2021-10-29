@@ -15,29 +15,30 @@ public class Song {
 	
 	@Size(min = 3, message = "content must be greater than 3 characters")
 	private String title;
-	
-	public String getAlbum() {
-		return album;
-	}
-
-	public void setAlbum(String album) {
-		this.album = album;
-	}
 
 	@Size(min = 3, message = "content must be greater than 3 characters")
 	private String artist;
 	
 	@Size(min = 3, message = "content must be greater than 3 characters")
 	private String album;
-	
+	private String description;
 	private String createdBy;
-
-
-	private int likes;
-    @Column(updatable=false)
+	@Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
 
+	private int likes;
+	
+	public Song() {
+	}
+	
+    public String getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(String album) {
+		this.album = album;
+	}
 
     public String getArtist() {
 		return artist;
@@ -47,20 +48,20 @@ public class Song {
 		this.artist = artist;
 	}
 	
-	 @OneToMany(fetch=FetchType.LAZY, mappedBy="song")
-	    private List<Comment> comments;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="song")
+	private List<Comment> comments;
 	 
-	    @ManyToOne(fetch=FetchType.LAZY)
-	    @JoinColumn(name="user_id")
-	    private User user;
-	    
-	    @ManyToMany(fetch=FetchType.LAZY)
-	    @JoinTable(
-			name="SongLikes",
-			joinColumns = @JoinColumn(name="idea_id"),
-			inverseJoinColumns = @JoinColumn(name="user_id")
-		)
-	    private List<User> users;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	private User user;
+    
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(
+		name="SongLikes",
+		joinColumns = @JoinColumn(name="idea_id"),
+		inverseJoinColumns = @JoinColumn(name="user_id")
+	)
+    private List<User> users;
 
 	public List<Comment> getComments() {
 		return comments;
@@ -76,9 +77,6 @@ public class Song {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public Song() {
 	}
 
 	public Long getId() {
@@ -135,6 +133,21 @@ public class Song {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	@PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
 	
 }
