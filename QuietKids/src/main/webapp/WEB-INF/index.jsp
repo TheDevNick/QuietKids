@@ -68,7 +68,7 @@
 					<p>${ comment.author.name } says: ${ comment.content }</p>
 				</c:forEach>
 				</div>
-				<form class="w-50 p-3" action="/songs/{song.id}/comment" method="post">
+				<form class="w-50 p-3" action="/songs/${song.id}/comment" method="post">
 					<div class="form-group">
 						<label for="comment">Add Comment</label>
 						<span>${ error }</span>
