@@ -33,7 +33,11 @@ public class Comment {
     protected void onCreate(){
         this.createdAt = new Date();
     }
+    @PreUpdate
 
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
     
     public Comment() {
 
@@ -90,11 +94,5 @@ public class Comment {
 	public void setLikes(int likes) {
 		this.likes = likes;
 	}
-
-	@PreUpdate
-
-    protected void onUpdate(){
-        this.updatedAt = new Date();
-    }
 }
 
