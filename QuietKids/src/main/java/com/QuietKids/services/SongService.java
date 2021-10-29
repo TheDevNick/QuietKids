@@ -68,8 +68,6 @@ private CommentRepo commentRepo;
         
     }
     
-    
-    
 	public List<Song> findbyArtist(String name){
 		return songRepo.findByArtist(name);
 	}
@@ -77,7 +75,6 @@ private CommentRepo commentRepo;
     //Delete
     public  void deleteSong(Long id) {
     	songRepo.deleteById(id);
-    	
     }
 }
 
