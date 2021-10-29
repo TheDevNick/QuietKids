@@ -27,11 +27,8 @@
     
 
 
-				<form action="/search" method="POST">
-					<input type="search" name="artist" /> 
-					<input type="submit" value="Search Artists" />
-				</form>
-	<h1  class="h3 mb-3 font-weight-normal" style="margin-left:-1000px;">Song Board:</h1>
+
+	<h1  class="h3 mb-3 font-weight-normal" style="margin-left:-1000px;">Songs by: <c:out value="${artist}"/></h1>
 			
 	
 	

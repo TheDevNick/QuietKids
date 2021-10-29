@@ -14,4 +14,8 @@ public class CommentService {
 	public Comment findByUser(User user) {
 		return this.commentRepo.findByUser(user);
 	}
+	
+	
+	
+	
 }

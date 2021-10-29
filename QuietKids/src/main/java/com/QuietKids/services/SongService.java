@@ -67,6 +67,12 @@ private CommentRepo commentRepo;
         }
         
     }
+    
+    
+    
+	public List<Song> findbyArtist(String name){
+		return songRepo.findByArtist(name);
+	}
 
     //Delete
     public  void deleteSong(Long id) {
