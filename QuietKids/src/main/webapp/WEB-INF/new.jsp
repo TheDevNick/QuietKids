@@ -15,13 +15,13 @@
     text-align: center;
     padding-top: 100px;">
         <a href="/logout"  class="btn btn-sm btn-primary" style="margin-left:1000px; ">Logout</a>
-    <a href="/ideas"  class="btn btn-sm btn-primary" style="margin-left:1000px; ">Dashboard</a>
+    <a href="/songs"  class="btn btn-sm btn-primary" style="margin-left:1000px; ">Dashboard</a>
 	<h1 class="h3 mb-3 font-weight-normal">New Idea</h1>
 
 	<p>
-		<form:errors path="idea.*" />
+		<form:errors path="song.*" />
 	</p>
-	<form:form method="POST" action="/ideas/new" modelAttribute="idea">
+	<form:form method="POST" action="/songs/new" modelAttribute="song">
 		<p>
 			<form:label path="title">Content:</form:label>
 			<form:input type="title" path="title"  class="form-control" />
