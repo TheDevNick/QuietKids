@@ -10,20 +10,20 @@
 <title>Dashboard</title>
 </head>
 <body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<h3 class="col-8">QuietKids</h3>
+			<div class="row">
+
+				<a href="/logout" class="btn btn-sm btn-primary mr-2">Logout</a>
+				<a href="/songs"  class="btn btn-sm btn-primary">Dashboard</a>
+			</div>
+		</nav>
 	<div style="    margin: 0px auto;
     width: 1200px;
     text-align: center;
     padding-top: 100px;">
-    <header class="mb-3 d-flex justify-content-between">
-    	<h3>QuietKids</h3>
-    	<div class="  p-1">
-    	
-    		<h4><i class="fas fa-user-circle"></i> Logged in: <c:out value="${user.name}" /></h4>
-    	</div>
-    	
-    </header>
-    	<a href="/logout"  class="btn btn-sm btn-primary" style="margin-left:1000px; ">Logout</a>
-    	<a href="/songs"  class="btn btn-sm btn-primary" style="margin-left:1000px; ">Dashboard</a>
+
+
     
 
 
