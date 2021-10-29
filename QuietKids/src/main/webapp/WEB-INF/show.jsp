@@ -6,7 +6,7 @@
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <meta charset="ISO-8859-1">
-<title><c:out value="${idea.title}"></c:out></title>
+<title><c:out value="${song.title}"></c:out></title>
 </head>
 <body>
 	<div style="    margin: 0px auto;
@@ -15,13 +15,13 @@
     padding-top: 100px;
     text-align: left;">
         <a href="/logout"  class="btn btn-sm btn-primary" style="margin-left:1000px; ">Logout</a>
-    <a href="/ideas"  class="btn btn-sm btn-primary" style="margin-left:1000px; ">Dashboard</a>
+    <a href="/songs"  class="btn btn-sm btn-primary" style="margin-left:1000px; ">Dashboard</a>
 	<h1>
-		<c:out value="${idea.title}" />
+		<c:out value="${song.title}" />
 	</h1>
 	<h2 class="h3 mb-3 font-weight-normal">
 		Posted By:
-		<c:out value="${idea.createdBy}" />
+		<c:out value="${song.createdBy}" />
 	</h2>
 	<h1>Song Liked By:</h1>
 	<table class="table table-striped ">
@@ -31,7 +31,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${idea.users}" var="u">
+			<c:forEach items="${song.users}" var="u">
 				<tr>
 					<td><c:out value="${u.name}" /></td>
 				</tr>
@@ -39,8 +39,8 @@
 		</tbody>
 	</table>
 
-	<c:if test="${ idea.createdBy.equals(user.name)}">
-		<a href="/ideas/${idea.id}/edit" class="btn btn-sm btn-primary">Edit</a>
+	<c:if test="${ song.createdBy.equals(user.name)}">
+		<a href="/songs/${song.id}/edit" class="btn btn-sm btn-primary">Edit</a>
 	</c:if>
 	</div>
 </body>
