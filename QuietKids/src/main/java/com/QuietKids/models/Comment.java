@@ -13,6 +13,8 @@ public class Comment {
 	private Long id;
 
 	private String content;
+	
+	private int likes;
 
 	@Column(updatable=false)
     private Date createdAt;
@@ -81,6 +83,14 @@ public class Comment {
 	public void setSong(Song song) {
 		this.song = song;
 	}
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
 	@PreUpdate
 
     protected void onUpdate(){

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -113,6 +114,19 @@ public class SongController {
 		return "redirect:/songs";
 		}
 	
+	@RequestMapping(value = "/songs/comment/like")
+	public String likeComment(@PathVariable("id") Long id, Model model,HttpSession session) {
+		Song song = songService.findSong(id);
+		Long UID=(Long) session.getAttribute("userId");
+		User user = userService.findById(UID);
+    	List<User> users =song.getUsers();
+    	song.setLikes(song.getLikes()+1);
+    	users.add(user);
+    	song.setUsers(users);
+		songService.updateSong(song);
+		return "redirect:/songs";
+		}
+	
 	@RequestMapping(value = "/songs/{id}/Unlike")
 	public String Unlike(@PathVariable("id") Long id, Model model,HttpSession session) {
 		Song song = songService.findSong(id);
@@ -139,6 +153,20 @@ public class SongController {
 		User user = this.userService.findById(userId);
 		this.songService.comment(user, song, comment);
 		return "redirect:/songs";
+	}
+	
+	
+	@PostMapping("/search")
+	public String searchArtist(@RequestParam("artist")String artist) {
+		return "redirect:/search/"+artist;
+	}
+	
+	@GetMapping("/search/{artist}")
+	public String showSearch(Model model,@PathVariable("artist")String artist) {
+		List<Song> songs = songService.findbyArtist(artist);
+		model.addAttribute("songs",songs);
+		model.addAttribute("artist",artist);
+		return "search.jsp";
 	}
 }
 
