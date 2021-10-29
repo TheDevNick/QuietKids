@@ -25,7 +25,7 @@ pageEncoding="ISO-8859-1"%>
 			</div>
 			<div class="col">
 				<h4><i class="fas fa-user-circle"></i> Logged in:
-					<c:out value="${user.name}" />
+					<a href="/profile"><c:out value="${user.name}" /></a>
 				</h4>
 				<a href="/logout" class="btn btn-sm btn-primary">Logout</a>
 			</div>

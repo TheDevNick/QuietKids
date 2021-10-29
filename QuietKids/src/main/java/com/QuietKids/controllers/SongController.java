@@ -168,5 +168,19 @@ public class SongController {
 		model.addAttribute("artist",artist);
 		return "search.jsp";
 	}
+	
+	@GetMapping("/profile")
+	public String showProfile(HttpSession session, Model model) {
+		Long uID = (Long) session.getAttribute("userId");
+		User user = this.userService.findById(uID);
+		Long userId = this.userSessionId(session);
+		if(userId == 0)
+			return "redirect:/";
+		Iterable<Song> songs = songService.allSongsLowest();
+		model.addAttribute("songs", songs);
+		model.addAttribute("user", user);
+		model.addAttribute("userId", userId);
+		return "profile.jsp";
+	}
 }
 

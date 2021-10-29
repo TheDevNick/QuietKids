@@ -23,7 +23,7 @@
     	
     </header>
     	<a href="/logout"  class="btn btn-sm btn-primary" style="margin-left:1000px; ">Logout</a>
-    	<a href="/songs"  class="btn btn-sm btn-primary" style="margin-left:1000px; ">Dashboard</a>
+    	<a href="/songs"  class="btn btn-sm btn-primary" style="margin-left:10px; ">Dashboard</a>
     
 
 
