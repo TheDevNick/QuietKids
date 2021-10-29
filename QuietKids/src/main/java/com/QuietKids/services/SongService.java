@@ -28,6 +28,10 @@ private CommentRepo commentRepo;
     public Iterable<Song> allSongsHighest() {
         return songRepo.findAllByOrderByLikesDesc();
     }
+    
+//    public Iterable<Song> allSongsByUser() {
+//        return songRepo.findAllById();
+//    }
     public Iterable<Song> allSongsLowest() {
         return songRepo.findAllByOrderByLikesAsc();
     }

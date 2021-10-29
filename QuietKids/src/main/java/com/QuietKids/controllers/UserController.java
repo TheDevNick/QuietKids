@@ -66,7 +66,7 @@ public class UserController {
 		Long userId = this.userSessionId(session);
 		if(userId == 0)
 			return "redirect:/";
-		Iterable<Song> songs = songService.allSongs();
+		Iterable<Song> songs = songService.allSongsLowest();
 		model.addAttribute("songs", songs);
 		model.addAttribute("user", user);
 		model.addAttribute("userId", userId);
