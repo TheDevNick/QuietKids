@@ -86,5 +86,6 @@
 				
 			</c:forEach>
 	</div>
+	<a href="/songs/new" class="btn btn-lg btn-primary" >Post A Song</a>
 </body>
 </html>
