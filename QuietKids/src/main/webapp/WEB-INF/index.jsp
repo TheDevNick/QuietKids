@@ -16,24 +16,23 @@ pageEncoding="ISO-8859-1"%>
 <body>
 	<div class="container-fluid">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<h3 class="col-8">QuietKids</h3>
-			<div class="row">
+			<h3 class="col">QuietKids</h3>
+			<div class="col-sm">
+				<form action="/search" method="POST">
+					<input type="search" name="artist" /> 
+					<input type="submit" value="Search Artists" />
+				</form>
+			</div>
+			<div class="col">
 				<h4><i class="fas fa-user-circle"></i> Logged in:
 					<c:out value="${user.name}" />
 				</h4>
 				<a href="/logout" class="btn btn-sm btn-primary">Logout</a>
 			</div>
 		</nav>
-
-		<h1>Song Board:</h1>
-					<div class="col-sm">
-				<form action="/search" method="POST">
-					<input type="search" name="artist" /> 
-					<input type="submit" value="Search Artists" />
-				</form>
-			</div>
-		<a href="/songs/highest">Top Songs</a>
 		
+		<h1>Song Board:</h1>
+		<a href="/songs/highest">Top Songs</a>
 		<!-- <h2 scope="col">Like/Unlike song</h2> -->
 		<div class="container-fluid">
 			<div class="row justify-content-center">
