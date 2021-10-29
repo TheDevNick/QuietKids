@@ -28,7 +28,7 @@
 
 
 	<h1  class="h3 mb-3 font-weight-normal" style="margin-left:-1000px;">Song Board:</h1>
-			<a href="/ideas/highest">Top Songs</a>
+			<a href="/songs/highest">Top Songs</a>
 			
 	
 	
@@ -40,35 +40,35 @@
 			<c:forEach items="${ideas}" var="idea">
                 <div class="card mb-3">
                     <div class="card-header d-flex justify-content-between">
-                      <a href="/ideas/${idea.id}">Post</a>
-                        <c:if test="${! idea.users.contains(user)}">
-                            <a href="/ideas/${idea.id}/like"> <i class="fas fa-thumbs-up fa-2x"> Like</i></a>
+                      <a href="/songs/${song.id}">Post</a>
+                        <c:if test="${! song.users.contains(user)}">
+                            <a href="/songs/${idea.id}/like"> <i class="fas fa-thumbs-up fa-2x"> Like</i></a>
                         </c:if>
-                        <c:if test="${idea.users.contains(user)}">
-                            <a href="/ideas/${idea.id}/Unlike"><i class="fas fa-thumbs-down fa-2x"> Unlike</i></a>
+                        <c:if test="${song.users.contains(user)}">
+                            <a href="/songs/${song.id}/Unlike"><i class="fas fa-thumbs-down fa-2x"> Unlike</i></a>
                         </c:if>
                     </div>
                     <div class="card-body">
                       <blockquote class="blockquote mb-0">
-                        <a href="/ideas/${idea.id}"><h2 scope="col"><i class="fas fa-music"></i> Song: <c:out value="${idea.title}" /></a></h2> 
+                        <a href="/songs/${song.id}"><h2 scope="col"><i class="fas fa-music"></i> Song: <c:out value="${song.title}" /></a></h2> 
                         
-                        <h2 scope="col"><i class="fas fa-user"></i> Artist: <c:out value="${idea.artist}" /></h2>
-                        <h2 scope="col"><i class="fas fa-compact-disc"></i> Album: <c:out value="${idea.album}" /></h2>
-                        <h2 scope="col">Likes: <c:out value="${idea.likes}" /></h2>
+                        <h2 scope="col"><i class="fas fa-user"></i> Artist: <c:out value="${song.artist}" /></h2>
+                        <h2 scope="col"><i class="fas fa-compact-disc"></i> Album: <c:out value="${song.album}" /></h2>
+                        <h2 scope="col">Likes: <c:out value="${song.likes}" /></h2>
 
 
-                        <footer class="blockquote-footer"><h2 scope="col">Posted By: <c:out value="${idea.createdBy}" /></h2></footer>
+                        <footer class="blockquote-footer"><h2 scope="col">Posted By: <c:out value="${song.createdBy}" /></h2></footer>
 
                       </blockquote>
                     </div>
                     <div class="event-details-side">
 				<h3>Comments</h3>
 				<div class="messages">
-				<c:forEach items="${ idea.messages }" var="message">
-					<p>${ message.author.name } says: ${ message.content }</p>
+				<c:forEach items="${ song.comments }" var="comment">
+					<p>${ comment.author.name } says: ${ comment.content }</p>
 				</c:forEach>
 				</div>
-				<form class="w-50 p-3" action="/ideas" method="post">
+				<form class="w-50 p-3" action="/songs" method="post">
 					<div class="form-group">
 						<label for="comment">Add Comment</label>
 						<span>${ error }</span>
