@@ -49,9 +49,11 @@ public class Song {
 	
 	 @OneToMany(fetch=FetchType.LAZY, mappedBy="song")
 	    private List<Comment> comments;
+	 
 	    @ManyToOne(fetch=FetchType.LAZY)
 	    @JoinColumn(name="user_id")
 	    private User user;
+	    
 	    @ManyToMany(fetch=FetchType.LAZY)
 	    @JoinTable(
 			name="SongLikes",
