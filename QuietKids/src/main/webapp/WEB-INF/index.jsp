@@ -26,7 +26,14 @@ pageEncoding="ISO-8859-1"%>
 		</nav>
 
 		<h1>Song Board:</h1>
+					<div class="col-sm">
+				<form action="/search" method="POST">
+					<input type="search" name="artist" /> 
+					<input type="submit" value="Search Artists" />
+				</form>
+			</div>
 		<a href="/songs/highest">Top Songs</a>
+		
 		<!-- <h2 scope="col">Like/Unlike song</h2> -->
 		<div class="container-fluid">
 			<div class="row justify-content-center">
@@ -69,10 +76,11 @@ pageEncoding="ISO-8859-1"%>
 					</c:forEach>
 				</div>
 			</div>
+			<a href="/songs/new" class="btn btn-lg btn-primary">Post A Song</a>
 		</div>
-		<a href="/songs/new" class="btn btn-lg btn-primary">Post A Song</a>
+		
 	</div>
-	<a href="/songs/new" class="btn btn-lg btn-primary" >Post A Song</a>
+
 </body>
 
 </html>
