@@ -30,58 +30,69 @@ pageEncoding="ISO-8859-1"%>
 				<a href="/logout" class="btn btn-sm btn-primary">Logout</a>
 			</div>
 		</nav>
-		
 		<h1>Song Board:</h1>
-		<a href="/songs/highest">Top Songs</a>
-		<!-- <h2 scope="col">Like/Unlike song</h2> -->
-		<div class="container-fluid">
-			<div class="row justify-content-center">
-				<div class="col-6">
-					<c:forEach items="${songs}" var="song">
-						<div class="card mb-3">
-							<div class="card-header d-flex justify-content-between">
-								<a href="/songs/${song.id}">Post</a>
-								<c:if test="${! song.users.contains(user)}">
-									<a href="/songs/${song.id}/like"> <i class="fas fa-thumbs-up fa-1x"> Like</i></a>
-								</c:if>
-								<c:if test="${song.users.contains(user)}">
-									<a href="/songs/${song.id}/Unlike"><i class="fas fa-thumbs-down fa-1x"> Unlike</i></a>
-								</c:if>
-							</div>
-							<div class="card-body">
-								<blockquote class="blockquote mb-0">
-									<a href="/songs/${song.id}">
-										<h2 scope="col"><i class="fas fa-music"></i> Song:
-											<c:out value="${song.title}"/>
-										</h2>
-									</a>
-									<h2 scope="col"><i class="fas fa-user"></i> Artist:
-										<c:out value="${song.artist}" />
-									</h2>
-									<h2 scope="col"><i class="fas fa-compact-disc"></i> Album:
-										<c:out value="${song.album}" />
-									</h2>
-									<h2 scope="col">Likes:
-										<c:out value="${song.likes}" />
-									</h2>
-										<h2 scope="col">Description:
-										<c:out value="${song.description}" />
-									</h2>
-									<footer class="blockquote-footer">
-										<h2 scope="col">Posted By:
-											<c:out value="${song.createdBy}" />
-										</h2>
-									</footer>
-								</blockquote>
-							</div>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-			<a href="/songs/new" class="btn btn-lg btn-primary">Post A Song</a>
+		<div class="container">
+			<a href="/songs/highest">Top Songs</a>
+		<div class="row">
+
 		</div>
-		
+		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+					<div class="carousel-item active">
+						<c:forEach items="${songs}" var="song">
+							<div class="col">
+								<div class="card mb-3">
+									<div class="card-header d-flex justify-content-between">
+										<a href="/songs/${song.id}">Post</a>
+										<c:if test="${! song.users.contains(user)}">
+											<a href="/songs/${song.id}/like"> <i class="fas fa-thumbs-up fa-1x"> Like</i></a>
+										</c:if>
+										<c:if test="${song.users.contains(user)}">
+											<a href="/songs/${song.id}/Unlike"><i class="fas fa-thumbs-down fa-1x"> Unlike</i></a>
+										</c:if>
+									</div>
+									<div class="card-body">
+										<blockquote class="blockquote mb-0">
+											<a href="/songs/${song.id}">
+												<h4 scope="col"><i class="fas fa-music"></i> Song:
+													<c:out value="${song.title}"/>
+												</h4>
+											</a>
+											<h5 scope="col"><i class="fas fa-user"></i> Artist:
+												<c:out value="${song.artist}" />
+											</h5>
+											<h5 scope="col"><i class="fas fa-compact-disc"></i> Album:
+												<c:out value="${song.album}" />
+											</h5>
+											<h4 scope="col">Likes:
+												<c:out value="${song.likes}" />
+											</h4>
+											<footer class="blockquote-footer">
+												<h6 scope="col">Posted By:
+													<c:out value="${song.createdBy}" />
+												</h6>
+											</footer>
+										</blockquote>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				
+			</div>
+			<a class="carousel-control-prev" href="#trendingCarousel" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#trendingCarousel" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
 	</div>
+		
+				
+		
 
 </body>
 
