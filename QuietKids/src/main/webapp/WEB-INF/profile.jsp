@@ -10,7 +10,7 @@ pageEncoding="ISO-8859-1"%>
 		integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
 		crossorigin="anonymous" />
 	<meta charset="ISO-8859-1">
-	<title>Dashboard</title>
+	<title>Profile</title>
 </head>
 
 <body>
@@ -24,15 +24,13 @@ pageEncoding="ISO-8859-1"%>
 				</form>
 			</div>
 			<div class="col">
-				<h4><i class="fas fa-user-circle"></i> Logged in:
-					<a href="/profile"><c:out value="${user.name}" /></a>
-				</h4>
+
 				<a href="/logout" class="btn btn-sm btn-primary">Logout</a>
+				<a href="/songs"  class="btn btn-sm btn-primary" style="margin-left:10px; ">Dashboard</a>
 			</div>
 		</nav>
 		
-		<h1>Song Board:</h1>
-		<a href="/songs/highest">Top Songs</a>
+		<h1>Your Recent Posts:</h1>
 		<!-- <h2 scope="col">Like/Unlike song</h2> -->
 		<div class="container-fluid">
 			<div class="row justify-content-center">
@@ -64,9 +62,6 @@ pageEncoding="ISO-8859-1"%>
 									<h2 scope="col">Likes:
 										<c:out value="${song.likes}" />
 									</h2>
-										<h2 scope="col">Description:
-										<c:out value="${song.description}" />
-									</h2>
 									<footer class="blockquote-footer">
 										<h2 scope="col">Posted By:
 											<c:out value="${song.createdBy}" />
@@ -78,7 +73,7 @@ pageEncoding="ISO-8859-1"%>
 					</c:forEach>
 				</div>
 			</div>
-			<a href="/songs/new" class="btn btn-lg btn-primary">Post A Song</a>
+			
 		</div>
 		
 	</div>

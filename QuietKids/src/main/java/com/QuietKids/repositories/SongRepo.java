@@ -10,4 +10,6 @@ public interface SongRepo extends CrudRepository<Song, Long> {
 	Iterable<Song> findAllByOrderByLikesAsc();
 	Iterable<Song> findAllByOrderByLikesDesc();
 	List<Song> findByArtist(String artist);
+//	Iterable<Song> findAllById();
+	
 }
