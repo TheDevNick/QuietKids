@@ -37,12 +37,12 @@
 				
 				<!-- <h2 scope="col">Like/Unlike song</h2> -->
 
-			<c:forEach items="${ideas}" var="idea">
+			<c:forEach items="${songs}" var="song">
                 <div class="card mb-3">
                     <div class="card-header d-flex justify-content-between">
                       <a href="/songs/${song.id}">Post</a>
                         <c:if test="${! song.users.contains(user)}">
-                            <a href="/songs/${idea.id}/like"> <i class="fas fa-thumbs-up fa-2x"> Like</i></a>
+                            <a href="/songs/${song.id}/like"> <i class="fas fa-thumbs-up fa-2x"> Like</i></a>
                         </c:if>
                         <c:if test="${song.users.contains(user)}">
                             <a href="/songs/${song.id}/Unlike"><i class="fas fa-thumbs-down fa-2x"> Unlike</i></a>
@@ -68,7 +68,7 @@
 					<p>${ comment.author.name } says: ${ comment.content }</p>
 				</c:forEach>
 				</div>
-				<form class="w-50 p-3" action="/songs" method="post">
+				<form class="w-50 p-3" action="/songs/{song.id}/comment" method="post">
 					<div class="form-group">
 						<label for="comment">Add Comment</label>
 						<span>${ error }</span>
@@ -82,7 +82,7 @@
 
 				
 			</c:forEach>
-	<a href="/ideas/new" class="btn btn-lg btn-primary" >Post A Song</a>
+	<a href="/songs/new" class="btn btn-lg btn-primary" >Post A Song</a>
 	</div>
 </body>
 </html>

@@ -70,13 +70,13 @@ public class SongController {
 		return "show.jsp";
 	}
 	
-	@RequestMapping(value = "/song/{id}/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/songs/{id}/delete", method = RequestMethod.POST)
 	public String delete(@PathVariable("id") Long id) {
 		songService.deleteSong(id);
 		return "redirect:/songs";
 	}
 	
-	@RequestMapping(value = "/ideas/{id}/edit")
+	@RequestMapping(value = "/songs/{id}/edit")
 	public String edit(@PathVariable("id") Long id, Model model) {
 		Song song = songService.findSong(id);
 		model.addAttribute("song", song);
@@ -110,10 +110,10 @@ public class SongController {
     	users.add(user);
     	song.setUsers(users);
 		songService.updateSong(song);
-		return "redirect:/ideas";
+		return "redirect:/songs";
 		}
 	
-	@RequestMapping(value = "/ideas/{id}/Unlike")
+	@RequestMapping(value = "/songs/{id}/Unlike")
 	public String Unlike(@PathVariable("id") Long id, Model model,HttpSession session) {
 		Song song = songService.findSong(id);
 		User user = userService.findById((Long) session.getAttribute("userId"));
@@ -126,19 +126,19 @@ public class SongController {
 		}
 	
 	//comment
-//	@PostMapping("/{id}/comment")
-//	public String Comment(@PathVariable("id") Long id, @RequestParam("comment") String comment, RedirectAttributes redirs, HttpSession session) {
-//		Long userId = this.userSessionId(session);
-//		if(userId == null)
-//			return "redirect:/";
-//		if(comment.equals("")) {
-//			redirs.addFlashAttribute("error", "Comment must not be blank");
-//			return "redirect:/ideas" ;
-//		}
-//		Song idea = this.songService.findSong(id);
-//		User user = this.userService.findById(userId);
-//		this.songService.comment(user, song, comment);
-//		return "redirect:/ideas";
-//	}
+	@PostMapping("/songs/{id}/comment")
+	public String Comment(@PathVariable("id") Long id, @RequestParam("comment") String comment, RedirectAttributes redirs, HttpSession session) {
+		Long userId = this.userSessionId(session);
+		if(userId == null)
+			return "redirect:/";
+		if(comment.equals("")) {
+			redirs.addFlashAttribute("error", "Comment must not be blank");
+			return "redirect:/songs" ;
+		}
+		Song song = this.songService.findSong(id);
+		User user = this.userService.findById(userId);
+		this.songService.comment(user, song, comment);
+		return "redirect:/songs";
+	}
 }
 
