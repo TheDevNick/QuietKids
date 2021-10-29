@@ -22,7 +22,11 @@ public class User {
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
-
+	
+	@OneToMany(fetch=FetchType.LAZY)
+	@JoinColumn(name="song_id")
+	private Song song;
+	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "songLikes", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "song_id"))
 	private List<Song> likedSongs;

@@ -79,6 +79,7 @@ private CommentRepo commentRepo;
     //Delete
     public  void deleteSong(Long id) {
     	songRepo.deleteById(id);
+    	commentRepo.deleteById(id);
     }
 }
 
